@@ -41,16 +41,18 @@ Next state of D flip-flop is always equal to data input, D for every positive tr
 **PROGRAM**
 
 ```python
-module D_ff(d,clk,rst,q);
-input d,clk,rst;
-output reg q;
-always@(negedge clk or posedge rst)begin
-if(rst)
-  q<=0;//Reset the flip-flop
-else
-  q<=d;//D input is passed to Q on the negative clock edge
-end
-endmodule
+module D_FF(D,clk,Q,Qbar);
+ input D,clk;
+ output reg Q;
+ output reg Qbar;
+ initial Q=0;
+ initial Qbar=1;
+ always @(posedge clk)
+ begin
+ Q=D;
+ Qbar=~D;
+ end
+ endmodule
 ```
 
 Program for flipflops and verify its truth table in quartus using Verilog programming.
@@ -62,13 +64,11 @@ RegisterNumber: 24900855
 
 **RTL LOGIC FOR FLIPFLOPS**
 
-![image](https://github.com/user-attachments/assets/89875696-e1e7-4cca-bd3d-379a412ed8a3)
-
+![image](https://github.com/user-attachments/assets/f6249956-c8fc-4698-b8e6-bb6a2337d06e)
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
 
-![image](https://github.com/user-attachments/assets/f65e685e-1bf8-4ded-8b1a-4432948aec00)
-
+![image](https://github.com/user-attachments/assets/4c100a3a-9e72-471c-b5ba-25b54919bdba)
 
 **RESULTS**
 
